@@ -5,7 +5,6 @@ services:
       - "80:80"
     volumes:
       - /app/fe/dist:/usr/share/nginx/html/fe:ro
-      - /app/api/frontend:/usr/share/nginx/html/api:ro
     depends_on:
       - be
     restart: unless-stopped
