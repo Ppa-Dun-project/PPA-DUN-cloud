@@ -4,7 +4,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - /app/api/frontend:/usr/share/nginx/html:ro
+      - /app/fe/dist:/usr/share/nginx/html/fe:ro
+      - /app/api/frontend:/usr/share/nginx/html/api:ro
     depends_on:
       - be
     restart: unless-stopped
