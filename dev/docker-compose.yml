@@ -5,12 +5,4 @@ services:
       - "80:80"
     volumes:
       - /app/fe/dist:/usr/share/nginx/html/fe:ro
-    depends_on:
-      - be
-    restart: unless-stopped
-
-  be:
-    build: /app/be
-    ports:
-      - "8080:8080"
     restart: unless-stopped
