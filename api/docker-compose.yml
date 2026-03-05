@@ -5,7 +5,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - /app/api/frontend:/usr/share/nginx/html/api:ro
+      - /app/api/frontend/dist:/usr/share/nginx/html/api:ro
       - certbot-webroot:/var/www/certbot:ro
       - certbot-certs:/etc/letsencrypt:ro
     depends_on:
