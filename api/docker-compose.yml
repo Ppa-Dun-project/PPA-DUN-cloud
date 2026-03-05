@@ -1,0 +1,8 @@
+services:
+  fe:
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - /app/api/frontend:/usr/share/nginx/html/api:ro
+    restart: unless-stopped
