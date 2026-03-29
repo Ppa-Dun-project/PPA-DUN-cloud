@@ -1,0 +1,6 @@
+apiVersion: v2
+name: ppa-dun
+description: Helm chart for Ppa-Dun application
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

@@ -1,0 +1,20 @@
+api:
+  image: us-east1-docker.pkg.dev/v1-mvp/api/api
+  tag: latest
+  replicas: 1
+  port: 8000
+  corsOrigins: "*"
+  externalApiBaseUrl: ""
+  externalApiKey: ""
+  externalApiTimeout: "5.0"
+
+backend:
+  image: us-east1-docker.pkg.dev/v1-mvp/be-api/backend
+  tag: latest
+  replicas: 1
+  port: 8000
+
+env: dev
+
+ingress:
+  host: api.ppa-dun.site
