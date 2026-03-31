@@ -6,7 +6,6 @@ metadata:
   annotations:
     ### static ip address that I made
     kubernetes.io/ingress.global-static-ip-name: "k8s-load-balancer"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   rules:
     - host: argocd.ppa-dun.site
@@ -18,4 +17,4 @@ spec:
               service:
                 name: argocd-server
                 port:
-                  number: 443
+                  number: 80
