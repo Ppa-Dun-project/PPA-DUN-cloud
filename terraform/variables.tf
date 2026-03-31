@@ -33,3 +33,35 @@ variable "subnet_cidr" {
   type        = string
   default     = "10.50.0.0/20"
 }
+
+# ── Secret values (no defaults, must be provided) ───────────────────
+
+variable "mysql_root_password" {
+  description = "MySQL root password"
+  type        = string
+  sensitive   = true
+}
+
+variable "mysql_database" {
+  description = "MySQL database name"
+  type        = string
+  sensitive   = true
+}
+
+variable "google_client_id" {
+  description = "Google OAuth client ID"
+  type        = string
+  sensitive   = true
+}
+
+variable "external_api_key" {
+  description = "External API key"
+  type        = string
+  sensitive   = true
+}
+
+variable "external_api_base_url" {
+  description = "External API base URL"
+  type        = string
+  sensitive   = true
+}
