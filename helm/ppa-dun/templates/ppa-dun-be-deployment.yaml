@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ppa-dun-be
+spec:
+  replicas: {{ .Values.ppaDunBe.replicas }}
+  selector:
+    matchLabels:
+      app: ppa-dun-be
+  template:
+    metadata:
+      labels:
+        app: ppa-dun-be
+    spec:
+      containers:
+        - name: ppa-dun-be
+          image: "{{ .Values.ppaDunBe.image }}:{{ .Values.ppaDunBe.tag }}"
+          ports:
+            - containerPort: {{ .Values.ppaDunBe.port }}
+          envFrom:
+            - secretRef:
+                name: app-secret

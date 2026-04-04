@@ -2,17 +2,22 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ppa-dun-ingress
-  annotations:
-    kubernetes.io/ingress.global-static-ip-name: "k8s-load-balancer"
 spec:
   rules:
     - host: {{ .Values.ingress.host }}
       http:
         paths:
+          - path: /api/auth
+            pathType: Prefix
+            backend:
+              service:
+                name: api-be
+                port:
+                  number: 80
           - path: /api
             pathType: Prefix
             backend:
               service:
-                name: ppa-dun-be
+                name: api-api
                 port:
                   number: 80
