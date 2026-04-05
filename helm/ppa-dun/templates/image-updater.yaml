@@ -7,9 +7,11 @@ spec:
   applicationRefs:
     - namePattern: "PPA-DUN"
       images:
-        - image: us-east1-docker.pkg.dev/v1-mvp/fe-prod/fe
-          name: ppa-dun-fe
-          updateStrategy: digest
-        - image: us-east1-docker.pkg.dev/v1-mvp/be-prod/be
-          name: ppa-dun-be
-          updateStrategy: digest
+        - alias: fe
+          imageName: us-east1-docker.pkg.dev/v1-mvp/fe-prod/fe:latest
+          commonUpdateSettings:
+            updateStrategy: digest
+        - alias: be
+          imageName: us-east1-docker.pkg.dev/v1-mvp/be-prod/be:latest
+          commonUpdateSettings:
+            updateStrategy: digest
