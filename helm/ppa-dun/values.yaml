@@ -1,5 +1,5 @@
 ppaDunFe:
-  image: us-east1-docker.pkg.dev/v2-ppa-dun/fe/ppa-dun-fe
+  image: us-east1-docker.pkg.dev/v1-mvp/fe-prod/fe
   tag: latest
   replicas: 1
   port: 80
