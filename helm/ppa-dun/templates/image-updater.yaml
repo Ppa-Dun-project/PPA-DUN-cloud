@@ -4,12 +4,12 @@ metadata:
   name: ppa-dun-updater
   namespace: argocd
 spec:
-  applications:
-    - name: PPA-DUN
+  applicationRefs:
+    - namePattern: "PPA-DUN"
       images:
-        - name: ppa-dun-fe
-          image: us-east1-docker.pkg.dev/v1-mvp/fe-prod/fe
-          strategy: digest
-        - name: ppa-dun-be
-          image: us-east1-docker.pkg.dev/v1-mvp/be-prod/be
-          strategy: digest
+        - image: us-east1-docker.pkg.dev/v1-mvp/fe-prod/fe
+          name: ppa-dun-fe
+          updateStrategy: digest
+        - image: us-east1-docker.pkg.dev/v1-mvp/be-prod/be
+          name: ppa-dun-be
+          updateStrategy: digest
