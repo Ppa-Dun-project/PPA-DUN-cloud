@@ -11,9 +11,25 @@ resource "google_project_iam_member" "secret_accessor" {
   member  = "serviceAccount:${google_service_account.app_secrets.email}"
 }
 
-# Allow K8s Service Account to use GCP Service Account (Workload Identity binding)
-resource "google_service_account_iam_member" "workload_identity" {
+# Grant token creator permission (required for Workload Identity)
+resource "google_project_iam_member" "token_creator" {
+  project = var.project_id
+  role    = "roles/iam.serviceAccountTokenCreator"
+  member  = "serviceAccount:${google_service_account.app_secrets.email}"
+}
+
+# Workload Identity binding for api-secrets-ksa
+resource "google_service_account_iam_member" "workload_identity_api" {
   service_account_id = google_service_account.app_secrets.name
   role               = "roles/iam.workloadIdentityUser"
-  member             = "serviceAccount:${var.project_id}.svc.id.goog[app/app-secrets-ksa]"
+  member             = "serviceAccount:${var.project_id}.svc.id.goog[app/api-secrets-ksa]"
+  depends_on         = [google_container_cluster.primary]
+}
+
+# Workload Identity binding for ppa-dun-secrets-ksa
+resource "google_service_account_iam_member" "workload_identity_ppa_dun" {
+  service_account_id = google_service_account.app_secrets.name
+  role               = "roles/iam.workloadIdentityUser"
+  member             = "serviceAccount:${var.project_id}.svc.id.goog[app/ppa-dun-secrets-ksa]"
+  depends_on         = [google_container_cluster.primary]
 }
