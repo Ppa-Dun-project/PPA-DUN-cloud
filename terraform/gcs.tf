@@ -25,6 +25,13 @@ resource "google_storage_bucket_iam_member" "api_frontend_public" {
   member = "allUsers"
 }
 
+# Grant GitHub Actions SA write access to bucket
+resource "google_storage_bucket_iam_member" "api_frontend_deployer" {
+  bucket = google_storage_bucket.api_frontend.name
+  role   = "roles/storage.objectAdmin"
+  member = "serviceAccount:github-actions@v1-mvp.iam.gserviceaccount.com"
+}
+
 # Backend bucket for CDN
 resource "google_compute_backend_bucket" "api_frontend_cdn" {
   name        = "api-frontend-cdn"
