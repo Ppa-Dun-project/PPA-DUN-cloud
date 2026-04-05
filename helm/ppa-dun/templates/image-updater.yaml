@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   applicationRefs:
-    - namePattern: "PPA-DUN"
+    - namePattern: "ppa-dun"
       images:
         - alias: fe
           imageName: us-east1-docker.pkg.dev/v1-mvp/fe-prod/fe:latest
