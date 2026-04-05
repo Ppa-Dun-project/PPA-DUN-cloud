@@ -4,6 +4,7 @@ metadata:
   name: ppa-dun-ingress
   annotations:
     kubernetes.io/ingress.global-static-ip-name: "ppa-dun-lb"
+    networking.gke.io/managed-certificates: "ppa-dun-cert"
 spec:
   rules:
     - host: {{ .Values.ingress.host }}

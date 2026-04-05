@@ -1,0 +1,7 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: ppa-dun-cert
+spec:
+  domains:
+    - ppa-dun.site
