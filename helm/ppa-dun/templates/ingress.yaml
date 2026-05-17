@@ -17,6 +17,24 @@ spec:
                 name: ppa-dun-be
                 port:
                   number: 80
+          # Webhook receiver from Player API for notifications.
+          # FastAPI enforces X-Internal-Key + INTERNAL_WEBHOOK_KEY.
+          - path: /internal
+            pathType: Prefix
+            backend:
+              service:
+                name: ppa-dun-be
+                port:
+                  number: 80
+          # Manual demo endpoints (POST /admin/notify, POST /admin/refresh-cache).
+          # FastAPI enforces X-Admin-Key + ADMIN_SECRET.
+          - path: /admin
+            pathType: Prefix
+            backend:
+              service:
+                name: ppa-dun-be
+                port:
+                  number: 80
           - path: /
             pathType: Prefix
             backend:
